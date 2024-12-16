@@ -1,20 +1,11 @@
--- Cek informasi target (termasuk perangkat)
-local targetInfo = gg.getTargetInfo()
-local currentDeviceId = targetInfo and targetInfo.device or "Unknown Device"
-
--- Ganti "Unknown Device" dengan ID atau deskripsi default jika `getTargetInfo()` tidak tersedia.
-
 -- Deklarasi untuk teks modifikasi dengan tema SuhooFight
-local inputUsername = " OWNER "  -- Ganti dengan cara untuk mendapatkan username, jika ada
+local inputUsername = " FREE USER "  -- Ganti dengan cara untuk mendapatkan username, jika ada
 local SuhoFight = [[
       🌟 SCRIPT BY SUHOOFIGHT 🌟
 
            ┌────────⋆⋅☆⋅⋆────────┐
 
             👤Username  : ]] .. inputUsername .. [[
-             
-             
-             📱Device     : ]] .. currentDeviceId .. [[
              
              
              📅 Date      : ]] .. os.date("%Y/%m/%d") .. [[
