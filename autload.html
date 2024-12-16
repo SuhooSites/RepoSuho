@@ -6,30 +6,56 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Auto Load Script from URL</title>
 <script>
-    var scriptUrl = "https://raw.githubusercontent.com/SuhooSites/RepoSuho/refs/heads/main/suho.lua";
-    var scriptVersion = "3.0"; // Versi skrip yang Anda miliki
-    var latestScriptVersion = "4.0"; // Versi terbaru skrip
+ var scriptUrl = "https://raw.githubusercontent.com/SuhooSites/RepoSuho/refs/heads/main/suho.lua";
+ var var ar configUrl = "https://raw.githubusercontent.com/SuhooSites/RepoSuho/refs/heads/main/config.lua";
+ var scriptVersion = "3.0"; // Versi skrip yang Anda miliki
+ var latestScriptVersion = "4.0"; // Versi terbaru skrip
 
-    function loadScript(url) {
-        var script = document.createElement('script');
-        script.src = url;
-        script.onload = function() {
-            console.log("Script loaded successfully.");
-            if (scriptVersion !== latestScriptVersion) {
-                alert(" Skrip telah diperbarui ke versi :" + latestScriptVersion + "!");
-            }
-        };
-        script.onerror = function() {
-            console.error("Failed to load script.");
-        };
-        document.head.appendChild(script);
-    }
+ function loadScript(url) {
+ var script = var script = = document.createElement('script');
+ script.src = url;
+ script.onload = function() {
+ console.log("Script loaded successfully.");
+ if (scriptVersion !== latestScriptVersion) {
+ alert("Skrip telah diperbarui ke versi: " + latestScriptVersion + "!");
+ }
+ };
+ script.onerror = function() {
+ console.error("Failed to }
+ };
+ script.onerror = function() {
+ console.error("Failed to console.error("Failed to load script.");
+ };
+ document.head.appendChild(script);
+ }
 
-    loadScript(scriptUrl);
+ function loadConfig(url) {
+ fetch(url)
+ .then(response => response.text())
+ .then(data => {
+ var configData = data.match(/version\s*=\s*["']([^"']+)["']/);
+ if (configData && configData.length > *=\s*["']([^"']+)["']/);
+ if (configData && configData.length > gData.length > 1) {
+ var configVersion = configData[1];
+ console.log("Script version: " + configVersion);
+ if (scriptVersion !== configVersion) {
+ alert("Script telah diperbarui ke versi: " + configVersion + "!");
+ }
+ }
+ })
+ .catch(error => console.error("Failed to load configVersion + "!");
+ }
+ }
+ })
+ .catch(error => console.error("Failed to load .catch(error => console.error("Failed to load ed to load config file:", error));
+ }
+
+ loadScript(scriptUrl);
+ loadConfig(configUrl);
 </script>
 </head>
 <body>
-    <h1>Auto Load Script from URL</h1>
-    <p>This page will automatically load a script from the provided URL.</p>
+ <h1>Auto Load Script from URL</h1>
+ <p>This page will automatically load a script from the provided URL.</p>
 </body>
 </html>
