@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,34 +5,58 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Form Username</title>
 <style>
-    body {
-        font-family: Arial, sans-serif;
-    }
-
-    form {
-        max-width: 300px;
-        margin: 50px auto;
-        padding: 20px;
-        border: 1px solid #ccc;
-        border-radius: 5px;
-        background-color: #f9f9f9;
-    }
-
-    input[type="text"],
-    input[type="submit"] {
-        width: 100%;
-        padding: 10px;
-        margin: 5px 0;
-        display: inline-block;
-        border: 1px solid #ccc;
+    * {
+        margin: 0;
+        padding: 0;
         box-sizing: border-box;
     }
 
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f9;
+        color: #333;
+    }
+
+    form {
+        max-width: 350px;
+        margin: 50px auto;
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-radius: 10px;
+        background-color: #fff;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    h1 {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    label {
+        font-size: 16px;
+        font-weight: bold;
+        margin-bottom: 8px;
+        display: block;
+    }
+
+    input[type="text"] {
+        width: 100%;
+        padding: 10px;
+        margin: 10px 0;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+
     input[type="submit"] {
+        width: 100%;
+        padding: 10px;
         background-color: #4CAF50;
         color: white;
         border: none;
+        border-radius: 5px;
+        font-size: 16px;
         cursor: pointer;
+        transition: background-color 0.3s ease;
     }
 
     input[type="submit"]:hover {
@@ -41,21 +64,56 @@
     }
 
     .user-list {
-        margin-top: 20px;
+        max-width: 350px;
+        margin: 20px auto;
+        padding: 20px;
+        background-color: #fff;
+        border: 1px solid #ccc;
+        border-radius: 10px;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     }
+
+    .user-list h2 {
+        text-align: center;
+        margin-bottom: 15px;
+    }
+
+    .user-list ul {
+        list-style-type: none;
+        padding-left: 0;
+    }
+
+    .user-list li {
+        background-color: #e7e7e7;
+        padding: 10px;
+        margin: 5px 0;
+        border-radius: 5px;
+        text-align: center;
+    }
+
 </style>
 </head>
 <body>
 
 <form action="proses_username.php" method="post">
-    <label for="username">Username:</label><br>
-    <input type="text" id="username" name="username" required><br>
+    <h1>Form Username</h1>
+    
+    <label for="username">Username:</label>
+    <input 
+        type="text" 
+        id="username" 
+        name="username" 
+        placeholder="Masukkan username Anda" 
+        required 
+        pattern="[A-Za-z0-9]{3,20}" 
+        title="Username hanya boleh terdiri dari 3-20 karakter alfanumerik (A-Z, a-z, 0-9)"
+    >
 
     <input type="submit" value="Submit">
 </form>
 
 <div class="user-list">
-    <h2>Daftar Username:</h2>
+    <h2>Daftar Username</h2>
     <ul>
         <li>FREE USER</li>
         <li>OWNER</li>
