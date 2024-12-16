@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,56 +5,59 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Auto Load Script from URL</title>
 <script>
- var scriptUrl = "https://raw.githubusercontent.com/SuhooSites/RepoSuho/refs/heads/main/suho.lua";
- var var ar configUrl = "https://raw.githubusercontent.com/SuhooSites/RepoSuho/refs/heads/main/config.lua";
- var scriptVersion = "3.0"; // Versi skrip yang Anda miliki
- var latestScriptVersion = "4.0"; // Versi terbaru skrip
+    // URL script dan konfigurasi
+    var scriptUrl = "https://raw.githubusercontent.com/SuhooSites/RepoSuho/main/suho.lua";
+    var configUrl = "https://raw.githubusercontent.com/SuhooSites/RepoSuho/main/config.lua";
+    
+    // Versi yang saat ini dimiliki
+    var scriptVersion = "3.0"; // Versi skrip yang dimiliki
+    var latestScriptVersion = "4.0"; // Versi terbaru skrip (ini dapat diperbarui dari server)
 
- function loadScript(url) {
- var script = var script = = document.createElement('script');
- script.src = url;
- script.onload = function() {
- console.log("Script loaded successfully.");
- if (scriptVersion !== latestScriptVersion) {
- alert("Skrip telah diperbarui ke versi: " + latestScriptVersion + "!");
- }
- };
- script.onerror = function() {
- console.error("Failed to }
- };
- script.onerror = function() {
- console.error("Failed to console.error("Failed to load script.");
- };
- document.head.appendChild(script);
- }
+    // Fungsi untuk memuat script dari URL
+    function loadScript(url) {
+        var script = document.createElement('script'); // Buat elemen <script>
+        script.src = url; // Tentukan sumber URL script
+        script.onload = function() {
+            console.log("Script loaded successfully from:", url);
+            if (scriptVersion !== latestScriptVersion) {
+                alert("Skrip telah diperbarui ke versi: " + latestScriptVersion + "!");
+            }
+        };
+        script.onerror = function() {
+            console.error("Failed to load script from:", url);
+        };
+        document.head.appendChild(script); // Tambahkan elemen <script> ke <head>
+    }
 
- function loadConfig(url) {
- fetch(url)
- .then(response => response.text())
- .then(data => {
- var configData = data.match(/version\s*=\s*["']([^"']+)["']/);
- if (configData && configData.length > *=\s*["']([^"']+)["']/);
- if (configData && configData.length > gData.length > 1) {
- var configVersion = configData[1];
- console.log("Script version: " + configVersion);
- if (scriptVersion !== configVersion) {
- alert("Script telah diperbarui ke versi: " + configVersion + "!");
- }
- }
- })
- .catch(error => console.error("Failed to load configVersion + "!");
- }
- }
- })
- .catch(error => console.error("Failed to load .catch(error => console.error("Failed to load ed to load config file:", error));
- }
+    // Fungsi untuk memuat file konfigurasi dari URL
+    function loadConfig(url) {
+        fetch(url)
+        .then(response => {
+            if (!response.ok) throw new Error("HTTP error " + response.status);
+            return response.text(); // Baca konten file
+        })
+        .then(data => {
+            var configData = data.match(/version\s*=\s*["']([^"']+)["']/); // Cari "version = 'x.x.x'" dalam file
+            if (configData && configData.length > 1) {
+                var configVersion = configData[1];
+                console.log("Versi yang ditemukan dalam konfigurasi:", configVersion);
+                if (scriptVersion !== configVersion) {
+                    alert("Skrip telah diperbarui ke versi: " + configVersion + "!");
+                }
+            } else {
+                console.warn("Versi tidak ditemukan dalam file konfigurasi.");
+            }
+        })
+        .catch(error => console.error("Gagal memuat file konfigurasi dari:", url, "Error:", error));
+    }
 
- loadScript(scriptUrl);
- loadConfig(configUrl);
+    // Panggil fungsi untuk memuat script dan config
+    loadScript(scriptUrl);
+    loadConfig(configUrl);
 </script>
 </head>
 <body>
- <h1>Auto Load Script from URL</h1>
- <p>This page will automatically load a script from the provided URL.</p>
+    <h1>Auto Load Script from URL</h1>
+    <p>This page will automatically load a script from the provided URL.</p>
 </body>
 </html>
