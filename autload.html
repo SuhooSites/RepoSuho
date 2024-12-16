@@ -1,0 +1,35 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Auto Load Script from URL</title>
+<script>
+    var scriptUrl = "https://raw.githubusercontent.com/SuhooSites/RepoSuho/refs/heads/main/suho.lua";
+    var scriptVersion = "3.0"; // Versi skrip yang Anda miliki
+    var latestScriptVersion = "4.0"; // Versi terbaru skrip
+
+    function loadScript(url) {
+        var script = document.createElement('script');
+        script.src = url;
+        script.onload = function() {
+            console.log("Script loaded successfully.");
+            if (scriptVersion !== latestScriptVersion) {
+                alert(" Skrip telah diperbarui ke versi :" + latestScriptVersion + "!");
+            }
+        };
+        script.onerror = function() {
+            console.error("Failed to load script.");
+        };
+        document.head.appendChild(script);
+    }
+
+    loadScript(scriptUrl);
+</script>
+</head>
+<body>
+    <h1>Auto Load Script from URL</h1>
+    <p>This page will automatically load a script from the provided URL.</p>
+</body>
+</html>
